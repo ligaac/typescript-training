@@ -1,21 +1,14 @@
-let x: number;
-let y: string;
-let z: any;
+var x;
+var y;
+var z;
 z = 5;
 z = 'ceva';
-
-enum PersonJob {
-    TEACHER,
-    ENGINEER,
-    POLICEMAN
-}
-
-interface IPerson {
-    name: string;
-    surname: string;
-    job: PersonJob;
-}
-
+var PersonJob;
+(function (PersonJob) {
+    PersonJob[PersonJob["TEACHER"] = 0] = "TEACHER";
+    PersonJob[PersonJob["ENGINEER"] = 1] = "ENGINEER";
+    PersonJob[PersonJob["POLICEMAN"] = 2] = "POLICEMAN";
+})(PersonJob || (PersonJob = {}));
 /*let o: IPerson;
 
 o = {
@@ -49,45 +42,34 @@ b = 'xulescu';
 //b = 2;
 
 let v: string | null;*/
-
-function functie(): void {
+function functie() {
     console.log('altceva');
 }
-
-function add(a: number, b: number): number {
+function add(a, b) {
     return a + b;
 }
-
-function comparePeople(p1: IPerson, p2: IPerson): boolean {
+function comparePeople(p1, p2) {
     return (p1.name === p2.name) && (p1.surname === p2.surname) && (p1.job === p2.job);
 }
-
-let p1: IPerson = {
+var p1 = {
     name: 'Andrei',
     surname: 'Popescu',
     job: PersonJob.TEACHER
-}
-
-let p2: IPerson = {
+};
+var p2 = {
     name: 'Andrei',
     surname: 'Popescu',
     job: PersonJob.TEACHER
-}
-
+};
 console.log(comparePeople(p1, p2));
-
 console.log(p1 === p2);
-
 functie();
 console.log(add(4, 3));
-
-function handler(x: number, y: number, func: (z: number) => void): void {
-    let result = x + y;
+function handler(x, y, func) {
+    var result = x + y;
     func(result);
 }
-
-function specialLog(num: number): void {
+function specialLog(num) {
     console.log(num + 5);
 }
-
 handler(1, 2, specialLog);
