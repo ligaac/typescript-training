@@ -83,3 +83,5 @@ class mycity {
     }
 }
 
+let city = new mycity();
+console.log(city.hello());
